@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PCQHW2+I7J8=",
+  "dgSpecHash": "/CYnz8zGvkI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\wwwda\\source\\repos\\SistemaLogin\\SistemaLogin\\SistemaLogin.csproj",
+  "projectFilePath": "C:\\Users\\wwwda\\source\\repos\\SistemaLogin 2.0\\SistemaLogin\\SistemaLogin.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\wwwda\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",
     "C:\\Users\\wwwda\\.nuget\\packages\\google.protobuf\\3.26.1\\google.protobuf.3.26.1.nupkg.sha512",

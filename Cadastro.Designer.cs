@@ -39,6 +39,8 @@
             button1 = new Button();
             repSenhaText = new TextBox();
             errorText1 = new Label();
+            label4 = new Label();
+            emailText = new TextBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -85,7 +87,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(441, 147);
+            label3.Location = new Point(441, 177);
             label3.Name = "label3";
             label3.Size = new Size(39, 15);
             label3.TabIndex = 3;
@@ -101,7 +103,7 @@
             // 
             // senhaText
             // 
-            senhaText.Location = new Point(441, 165);
+            senhaText.Location = new Point(441, 195);
             senhaText.Name = "senhaText";
             senhaText.PlaceholderText = "senha";
             senhaText.Size = new Size(207, 23);
@@ -113,7 +115,7 @@
             button1.BackColor = Color.DarkViolet;
             button1.Cursor = Cursors.Hand;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(441, 278);
+            button1.Location = new Point(440, 295);
             button1.Margin = new Padding(0);
             button1.Name = "button1";
             button1.Size = new Size(207, 23);
@@ -124,7 +126,7 @@
             // 
             // repSenhaText
             // 
-            repSenhaText.Location = new Point(441, 194);
+            repSenhaText.Location = new Point(440, 224);
             repSenhaText.Name = "repSenhaText";
             repSenhaText.PlaceholderText = "repetir senha";
             repSenhaText.Size = new Size(207, 23);
@@ -135,16 +137,36 @@
             // 
             errorText1.AutoSize = true;
             errorText1.ForeColor = Color.Red;
-            errorText1.Location = new Point(441, 220);
+            errorText1.Location = new Point(441, 250);
             errorText1.Name = "errorText1";
             errorText1.Size = new Size(0, 15);
             errorText1.TabIndex = 8;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(441, 133);
+            label4.Name = "label4";
+            label4.Size = new Size(36, 15);
+            label4.TabIndex = 9;
+            label4.Text = "Email";
+            // 
+            // emailText
+            // 
+            emailText.Location = new Point(441, 151);
+            emailText.Name = "emailText";
+            emailText.PlaceholderText = "email@email.com";
+            emailText.Size = new Size(206, 23);
+            emailText.TabIndex = 10;
             // 
             // Cadastro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Gainsboro;
             ClientSize = new Size(713, 394);
+            Controls.Add(emailText);
+            Controls.Add(label4);
             Controls.Add(errorText1);
             Controls.Add(repSenhaText);
             Controls.Add(button1);
@@ -176,5 +198,7 @@
         private PictureBox pictureBox1;
         private TextBox repSenhaText;
         private Label errorText1;
+        private Label label4;
+        private TextBox emailText;
     }
 }

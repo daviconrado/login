@@ -5,6 +5,7 @@ namespace SistemaLogin
     public partial class Login : Form
     {
         public static Cadastro cadastro = new Cadastro();
+        public static EsqueceuSenha esqueceuSenha = new EsqueceuSenha();
 
         public Login()
         {
@@ -20,24 +21,23 @@ namespace SistemaLogin
         {
             string user = usuarioText.Text;
             string senha = senhaText.Text;
-            int eFlag = 0;
+            bool eFlag = false;
 
             bool userSymbol = user.Any(c => char.IsSymbol(c) || char.IsPunctuation(c));
-            bool senhaSymbol = user.Any(c => char.IsSymbol(c) || char.IsPunctuation(c));
 
             if (user == "" || senha == "")
             {
-                eFlag = 1;
+                eFlag = true;
                 errorText("*todos os campos devem ser preenchidos");
             }
 
-            if (userSymbol || senhaSymbol)
+            if (userSymbol)
             {
-                eFlag = 1;
-                errorText("*os campos não devem conter símbolos");
+                eFlag = true;
+                errorText("*o campo usuário não deve conter símbolos");
             }
 
-            if (eFlag == 0)
+            if (!eFlag)
             {
                 string comandoSQL = $"SELECT * FROM usuarios WHERE user=\"{user}\"";
                 var resultado = ConectaDB.ConectarDB(comandoSQL);
@@ -45,7 +45,8 @@ namespace SistemaLogin
                 byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(senha);
                 string senhaHash = Convert.ToBase64String(byteArray);
 
-                if (resultado.Rows.Count == 0) {
+                if (resultado.Rows.Count == 0)
+                {
                     errorText("*usuário ou senha incorreto");
                     return;
                 }
@@ -75,6 +76,11 @@ namespace SistemaLogin
             responseLabel.Visible = true;
             responseLabel.ForeColor = Color.Red;
             responseLabel.Text = msg;
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            esqueceuSenha.ShowDialog();
         }
     }
 }

@@ -1792,11 +1792,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\wwwda\\source\\repos\\SistemaLogin\\SistemaLogin\\SistemaLogin.csproj",
+      "projectUniqueName": "C:\\Users\\wwwda\\source\\repos\\SistemaLogin 2.0\\SistemaLogin\\SistemaLogin.csproj",
       "projectName": "SistemaLogin",
-      "projectPath": "C:\\Users\\wwwda\\source\\repos\\SistemaLogin\\SistemaLogin\\SistemaLogin.csproj",
+      "projectPath": "C:\\Users\\wwwda\\source\\repos\\SistemaLogin 2.0\\SistemaLogin\\SistemaLogin.csproj",
       "packagesPath": "C:\\Users\\wwwda\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\wwwda\\source\\repos\\SistemaLogin\\SistemaLogin\\obj\\",
+      "outputPath": "C:\\Users\\wwwda\\source\\repos\\SistemaLogin 2.0\\SistemaLogin\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\wwwda\\AppData\\Roaming\\NuGet\\NuGet.Config",

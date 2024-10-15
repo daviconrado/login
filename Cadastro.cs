@@ -28,34 +28,38 @@ namespace SistemaLogin
             string user = usuarioText.Text;
             string senha1 = senhaText.Text;
             string senha2 = repSenhaText.Text;
-            int eFlag = 0;
+            string email = emailText.Text;
+            bool eFlag = false;
             errorText1.Text = "";
 
             bool userSymbol = user.Any(c => char.IsSymbol(c) || char.IsPunctuation(c));
-            bool senhaSymbol = senha1.Any(c => char.IsSymbol(c) || char.IsPunctuation(c));
-            bool senha2Symbol = senha2.Any(c => char.IsSymbol(c) || char.IsPunctuation(c));
 
             if (senha1 != senha2)
             {
-                eFlag = 1;
+                eFlag = true;
                 errorText1.Text += "\r\n*as senhas devem ser iguais";
             }
             if (senha1 == "" || senha2 == "" || user == "") {
-                eFlag = 1;
+                eFlag = true;
                 errorText1.Text += "\r\n*todos os campos devem ser preenchidos";
             }
-            if (userSymbol || senhaSymbol || senha2Symbol)
+            if (userSymbol)
             {
-                eFlag = 1;
-                errorText1.Text += "\r\n*os campos não devem conter símbolos";
+                eFlag = true;
+                errorText1.Text += "\r\n*o campo usuário não deve conter símbolos";
+            }
+            if (!email.Contains("@")||email.EndsWith("@"))
+            {
+                eFlag = true;
+                errorText1.Text += "\r\n*insira um email válido";
             }
 
 
-            if (eFlag == 0) {
+            if (!eFlag) {
                 byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(senha1);
                 string senhaHash = Convert.ToBase64String(byteArray);
 
-                var retorno = ConectaDB.ConectarDB($"insert into usuarios(user, password) values(\"{user}\", \"{senhaHash}\")");
+                var retorno = ConectaDB.ConectarDB($"insert into usuarios(user, password, email) values(\"{user}\", \"{senhaHash}\",\"{email}\")");
                 if(retorno.Columns.Count != 1)
                 {
                     Login.cadastro.Close();
