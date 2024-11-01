@@ -1,3 +1,4 @@
+using SistemaLogin;
 using System.Data;
 
 namespace SistemaLogin
@@ -21,45 +22,28 @@ namespace SistemaLogin
         {
             string user = usuarioText.Text;
             string senha = senhaText.Text;
-            bool eFlag = false;
 
-            bool userSymbol = user.Any(c => char.IsSymbol(c) || char.IsPunctuation(c));
+            ValidaCampos valida = new ValidaCampos();
+            bool flag = valida.ValidaLogin(user, senha);
 
-            if (user == "" || senha == "")
-            {
-                eFlag = true;
-                errorText("*todos os campos devem ser preenchidos");
-            }
-
-            if (userSymbol)
-            {
-                eFlag = true;
-                errorText("*o campo usuário não deve conter símbolos");
-            }
-
-            if (!eFlag)
+            if (flag)
             {
                 string comandoSQL = $"SELECT * FROM usuarios WHERE user=\"{user}\"";
                 var resultado = ConectaDB.ConectarDB(comandoSQL);
 
-                byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(senha);
-                string senhaHash = Convert.ToBase64String(byteArray);
+                SenhaHash senhaobj = new SenhaHash();
+                string senhaHash = senhaobj.GeraHash(senha);
 
-                if (resultado.Rows.Count == 0)
-                {
-                    errorText("*usuário ou senha incorreto");
-                    return;
-                }
-                DataRow dataRow = resultado.Rows[0];
+                LoginValido valido = new LoginValido();
 
-                if (dataRow.Field<string>("user") != user || dataRow.Field<string>("password") != senhaHash)
+                if (valido.Valido(resultado,user,senha))
                 {
-                    errorText("*usuário ou senha incorreto");
+                    successText("*logado com sucesso");
                 }
 
-                else if (dataRow.Field<string>("user") == user && dataRow.Field<string>("password") == senhaHash)
+                else if (!valido.Valido(resultado, user, senha))
                 {
-                    successText("logado com sucesso");
+                    errorText("*usuário ou senha incorreto");
                 }
             }
         }
@@ -81,6 +65,11 @@ namespace SistemaLogin
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             esqueceuSenha.ShowDialog();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

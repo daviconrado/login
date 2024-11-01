@@ -186,6 +186,7 @@
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Name = "Login";
             Text = "Sistema de Login";
+            Load += Login_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
